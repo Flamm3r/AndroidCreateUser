@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CreateUserApp</string>
+    <string name="labelUserID">Enter your ID:</string>
+    <string name="inputPassword" />
+    <string name="inputUserID" />
+    <string name="labelPassword">Enter your Password:</string>
+    <string name="buttonSubmit">Submit!</string>
+    <string name="inputPasswordReenter">Confirm your Password:</string>
+</resources>
