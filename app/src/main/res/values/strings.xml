@@ -6,4 +6,7 @@
     <string name="labelPassword">Enter your Password:</string>
     <string name="buttonSubmit">Submit!</string>
     <string name="inputPasswordReenter">Confirm your Password:</string>
+    <string name="back_to_login">back to Login</string>
+    <string name="Login">Login</string>
+    <string name="register">Register</string>
 </resources>

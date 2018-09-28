@@ -55,24 +55,47 @@
         android:text="@string/inputPassword"
         android:padding="10dp"/>
 
+    <TextView
+        android:id="@+id/labelPasswordReenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/inputPasswordReenter"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/inputPasswordReenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/labelPasswordReenter"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:text="@string/inputPassword"
+        android:padding="10dp"/>
+
     <Button
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/inputPassword"
-        android:text="@string/Login"
+        android:layout_below="@id/inputPasswordReenter"
+        android:text="@string/buttonSubmit"
         android:padding="10dp"/>
 
     <Button
         style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/buttonSubmit"
-        android:text="@string/register"
+        android:text="@string/back_to_login"
         android:padding="10dp"/>
 
 </RelativeLayout>
