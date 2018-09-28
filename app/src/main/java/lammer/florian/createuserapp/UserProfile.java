@@ -21,10 +21,10 @@ public class UserProfile extends AppCompatActivity{
 
         final MySQLiteOpenHelper dbHelper = new MySQLiteOpenHelper(this);
 
-        Cursor res = dbHelper.query("read1");
+        //Cursor res = dbHelper.query("read1");
 
 
-        userID.setText(res.getString(res.getColumnIndex(COL_2)));
+        //userID.setText(res.getString(res.getColumnIndex(COL_2)));
 
 
 

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     //DatabaseVersion
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     //DatabaseName
     private static final String DATABASE_NAME = "Login.db";
     //Tabel Name
@@ -23,7 +23,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
 
     //Create Anweisung
-    private static final String TABLE_CREATE = "CREATE TABLE TABLE_LOGIN (DB_ID integer PRIMARY KEY AUTOINCREMENT NOT NULL , " +
+    private static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (DB_ID integer PRIMARY KEY NOT NULL , " +
                                                 "USER_ID TEXT NOT NULL, USER_PW TEXT NOT NULL)";
 
     /*
@@ -56,12 +56,56 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
 
+    /*
     public void insertData(String userID, String password){
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, userID);
         contentValues.put(COL_3, password);
     }
+    */
 
+    public void insertContact(Contact c){
+        db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        int count = cursor.getCount();
+
+        values.put(COL_1, count);
+        values.put(COL_2, c.getUser_ID());
+        values.put(COL_3, c.getPassword());
+
+        db.insert(TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public String searchPass(String user_name){
+        db = this.getReadableDatabase();
+        String query = "SELECT USER_ID, USER_PW FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String a,b;
+
+        b = "not found";
+
+        if(cursor.moveToFirst()){
+            do{
+                a = cursor.getString(0);
+                b = cursor.getString(1);
+
+                if(a.equals(user_name)){
+                    b=cursor.getString(1);
+                    break;
+                }
+            }while(cursor.moveToNext());
+        }
+
+        return b;
+    }
+
+
+    /*
     public Cursor getAllData(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("SELECT " + COL_2 + " from " + TABLE_NAME, null);
@@ -73,5 +117,6 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("SELECT " + COL_2 + " FROM " + TABLE_NAME + " WHERE " + COL_2 + "='" + login + "';", null);
         return res;
     }
+    */
 
 }

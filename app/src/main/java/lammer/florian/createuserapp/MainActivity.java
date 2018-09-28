@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText _userID;
     private EditText _userPW;
-    private EditText _userPWreenterd;
     private Button _submit;
+    private Button _register;
+
+    MySQLiteOpenHelper helper = new MySQLiteOpenHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,57 +33,35 @@ public class MainActivity extends AppCompatActivity {
 
         _userID = findViewById(R.id.inputUserID);
         _userPW = findViewById(R.id.inputPassword);
-        _userPWreenterd = findViewById(R.id.inputPasswordReenter);
         _submit = findViewById(R.id.buttonSubmit);
+        _register = findViewById(R.id.buttonRegister);
 
-
-        final MySQLiteOpenHelper dbHelper = new MySQLiteOpenHelper(this);
 
         _submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Toast Messeges, if registration fails
-                if (_userID.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Please enter a user ID!", Toast.LENGTH_SHORT).show();
-                }else if (_userPW.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Please enter a Password!", Toast.LENGTH_SHORT).show();
-                }else if (_userPWreenterd.getText().toString().equals("")){
-                    Toast.makeText(getApplicationContext(), "Please confirm your Password!", Toast.LENGTH_SHORT).show();
+                String name = _userID.getText().toString();
+                String password_input = _userPW.getText().toString();
 
-                //db entry if registration succeeds
-                }else if (_userPW.getText().toString().equals(_userPWreenterd.getText().toString())){
-                    //MySQLiteOpenHelper dbHelper = new MySQLiteOpenHelper(getApplicationContext());
-
-                    //Create Object of dbHelper class
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                    /*ContentValues values = new ContentValues();
-                    values.put("userID", String.valueOf(_userID.getText()));
-                    db.insert("login", null, values);
-                    values.put("userPW", String.valueOf(_userPW.getText()));
-                    db.insert("login", null, values);
-                    */
-                    dbHelper.insertData(String.valueOf(_userID.getText()), String.valueOf(_userPW.getText()));
-
-                    db.close();
-                    dbHelper.close();
-                    Toast.makeText(getApplicationContext(), "Thank you, user profile submitted!", Toast.LENGTH_SHORT).show();
-
-                    //new screen with user profile
-                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
-                    startActivity(intent);
-
+                String password = helper.searchPass(name);
+                if(password_input.equals(password)){
+                    //new Intent
+                    Toast.makeText(getApplicationContext(), "password korrekt", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Password doesn't match the confirm password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "password falsch", Toast.LENGTH_SHORT).show();
                 }
 
 
+            }
+        });
 
-                /*DEBUG
-                Toast.makeText(getApplicationContext(), "button clicked", Toast.LENGTH_SHORT).show();
-                Log.d("Button clicked", "Der Submit Button wurde geklickt");
-                */
+        _register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Register.class);
+                finish();
+                startActivity(intent);
             }
         });
 

@@ -3,14 +3,10 @@ package lammer.florian.createuserapp;
 public class Contact {
 
     //Variables
-    int id;
+
     String user_ID, password;
 
     //Setter
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setUser_ID(String user_ID) {
         this.user_ID = user_ID;
     }
@@ -20,10 +16,6 @@ public class Contact {
     }
 
     //Getter
-    public int getId() {
-        return id;
-    }
-
     public String getUser_ID() {
         return user_ID;
     }
