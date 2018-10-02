@@ -3,22 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello "
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/enjoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/hello"
-        android:text="" />
+        android:layout_below="@id/hello"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/enjoy_your_stay"
+        android:textColor="@color/colorPrimary" />
+
+
+    <ImageView
+        android:layout_below="@id/enjoy"
+        android:layout_above="@id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:src="@drawable/profilepic_female"/>
+
+    <Button
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/logout"
+        android:padding="10dp"/>
 
 </RelativeLayout>

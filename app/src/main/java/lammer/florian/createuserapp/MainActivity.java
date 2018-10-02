@@ -47,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 String password = helper.searchPass(name);
                 if(password_input.equals(password)){
                     //new Intent
-                    Toast.makeText(getApplicationContext(), "password korrekt", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.welcome) + name + "!", Toast.LENGTH_SHORT).show();
+
+                    //new screen with user profile
+                    Intent intent = new Intent(MainActivity.this, UserProfile.class);
+                    intent.putExtra("name", name);
+                    finish();
+                    MainActivity.this.startActivity(intent);
+
                 }else{
-                    Toast.makeText(getApplicationContext(), "password falsch", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.wrongLogin, Toast.LENGTH_SHORT).show();
                 }
 
 

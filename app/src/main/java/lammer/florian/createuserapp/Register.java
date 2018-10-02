@@ -79,10 +79,6 @@ public class Register extends AppCompatActivity {
                     //dbHelper.close();
                     Toast.makeText(getApplicationContext(), "Thank you, user profile submitted!", Toast.LENGTH_SHORT).show();
 
-                    //new screen with user profile
-                    Intent intent = new Intent(getApplicationContext(), UserProfile.class);
-                    startActivity(intent);
-
                 }else{
                     Toast.makeText(getApplicationContext(), "Password doesn't match the confirm password!", Toast.LENGTH_SHORT).show();
                 }
